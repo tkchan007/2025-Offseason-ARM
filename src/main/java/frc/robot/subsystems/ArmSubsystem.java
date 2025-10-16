@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import frc.robot.Constants;
+
 public class ArmSubsystem extends SubsystemBase {
     // Hardware
     private final SparkMax armMotor;
@@ -24,15 +26,15 @@ public class ArmSubsystem extends SubsystemBase {
     private final RelativeEncoder encoder;
     
     // Constants
-    private static final int ARM_MOTOR_CAN_ID = 10; // Change to your CAN ID
-    private static final double GEAR_RATIO = 100.0;
-    private static final double ARM_LENGTH_INCHES = 19.0;
+    private static final int ARM_MOTOR_CAN_ID = Constants.ArmConstants.ARM_MOTOR_CAN_ID; 
+    private static final double GEAR_RATIO = Constants.ArmConstants.GEAR_RATIO;
+    private static final double ARM_LENGTH_INCHES = Constants.ArmConstants.ARM_LENGTH_INCHES;
     
     // Arm positions in degrees (0 = straight down)
-    public static final double REST_POSITION = 0.0;      // Straight down
-    public static final double SCORE_45_POSITION = 45.0;  // 45° above rest
-    public static final double SCORE_60_POSITION = 60.0;  // 60° above rest
-    public static final double VERTICAL_POSITION = 180.0; // Straight up
+    public static final double REST_POSITION = Constants.ArmConstants.REST_POSITION;      // Straight down
+    public static final double SCORE_45_POSITION = Constants.ArmConstants.SCORE_45_POSITION;  // 45° above rest
+    public static final double SCORE_60_POSITION = Constants.ArmConstants.SCORE_60_POSITION;  // 60° above rest
+    public static final double VERTICAL_POSITION = Constants.ArmConstants.VERTICAL_POSITION; // Straight up
     
     // Default PID Constants (loaded from code)
     private static final double DEFAULT_KP = 0.1;

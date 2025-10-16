@@ -8,17 +8,17 @@ package frc.robot;
 public final class Constants {
     
     public static final class ArmConstants {
-        // CAN IDs
-        public static final int ARM_MOTOR_CAN_ID = 10;
+        // CAN ID - 30 - one in the back of the robot for now
+        public static final int ARM_MOTOR_CAN_ID = 30;
         
         // Physical properties
-        public static final double GEAR_RATIO = 100.0;
+        public static final double GEAR_RATIO = 125.0;
         public static final double ARM_LENGTH_INCHES = 19.0;
         
         // Positions (degrees, 0 = straight down)
         public static final double REST_POSITION = 0.0;
-        public static final double SCORE_45_POSITION = 45.0;
-        public static final double SCORE_60_POSITION = 60.0;
+        public static final double SCORE_45_POSITION = 45.0 + 90.0;
+        public static final double SCORE_60_POSITION = 60.0 + 90.0;
         public static final double VERTICAL_POSITION = 180.0;
         
         // PID Constants (TUNE THESE VALUES)

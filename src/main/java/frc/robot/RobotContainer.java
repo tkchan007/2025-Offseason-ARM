@@ -59,19 +59,19 @@ public class RobotContainer {
         // ============================================================
         
         // A button - Move to rest position (straight down)
-        operatorController.a()
+        driverController.a()
             .onTrue(armSubsystem.moveToRestCommand());
         
         // B button - Move to 45° position
-        operatorController.b()
+        driverController.b()
             .onTrue(armSubsystem.moveTo45Command());
         
         // X button - Move to 60° position
-        operatorController.x()
+        driverController.x()
             .onTrue(armSubsystem.moveTo60Command());
         
         // Y button - Move to vertical position (180°)
-        operatorController.y()
+        driverController.y()
             .onTrue(armSubsystem.moveToVerticalCommand());
         
         // ============================================================
@@ -94,43 +94,43 @@ public class RobotContainer {
             }));
         
         // CAL: Left trigger - Manual control DOWN (while held)
-        driverController.leftTrigger(0.1)
+        operatorController.leftTrigger(0.1)
             .whileTrue(new CAL_ManualArmControl(armSubsystem, -0.15));
         
         // CAL: Right trigger - Manual control UP (while held)
-        driverController.rightTrigger(0.1)
+        operatorController.rightTrigger(0.1)
             .whileTrue(new CAL_ManualArmControl(armSubsystem, 0.15));
         
         // CAL: A button - Test Gravity Feedforward (hold while adjusting kG)
-        driverController.a()
+        operatorController.a()
             .whileTrue(new CAL_TestGravityFeedforward(armSubsystem));
         
         // CAL: B button - PID Tuning to 45° target
-        driverController.b()
+        operatorController.b()
             .whileTrue(new CAL_TunePID(armSubsystem));
         
         // CAL: X button - Motion Profile Test (0° to 180°)
-        driverController.x()
+        operatorController.x()
             .onTrue(new CAL_TuneMotionProfile(armSubsystem, 0.0, 180.0));
         
         // CAL: Y button - Motion Profile Test (180° to 0°)
-        driverController.y()
+        operatorController.y()
             .onTrue(new CAL_TuneMotionProfile(armSubsystem, 180.0, 0.0));
         
         // CAL: Left bumper - Disturbance test at 90°
-        driverController.leftBumper()
+        operatorController.leftBumper()
             .whileTrue(new CAL_DisturbanceTest(armSubsystem, 90.0));
         
         // CAL: Right bumper - Save calibration values to LIVE
-        driverController.rightBumper()
+        operatorController.rightBumper()
             .onTrue(new CAL_SaveCalibration(armSubsystem));
         
         // CAL: POV Up - Load LIVE values to CAL for further tuning
-        driverController.povUp()
+        operatorController.povUp()
             .onTrue(new CAL_LoadLiveValues(armSubsystem));
         
         // CAL: POV Down - Reset encoder (arm must be at rest position)
-        driverController.povDown()
+        operatorController.povDown()
             .onTrue(new InstantCommand(() -> armSubsystem.resetEncoder())
                 .ignoringDisable(true));
         

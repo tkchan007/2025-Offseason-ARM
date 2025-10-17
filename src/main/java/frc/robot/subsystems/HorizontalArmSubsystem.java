@@ -219,9 +219,11 @@ public class HorizontalArmSubsystem extends SubsystemBase {
             kP = newKP;
             kI = newKI;
             kD = newKD;
-            pidController.setP(kP, ClosedLoopSlot.kSlot0);
-            pidController.setI(kI, ClosedLoopSlot.kSlot0);
-            pidController.setD(kD, ClosedLoopSlot.kSlot0);
+            
+            // Update PID gains using the newer REV API
+            SparkMaxConfig config = new SparkMaxConfig();
+            config.closedLoop.pid(kP, kI, kD);
+            armMotor.configure(config, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
         }
         
         if (newKG != kG) {

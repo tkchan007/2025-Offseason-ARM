@@ -287,6 +287,7 @@ public class HorizontalArmSubsystem extends SubsystemBase {
             .withName("ResetArmEncoder");
     }
     
+    
     /**
      * Command to enable calibration mode
      */
